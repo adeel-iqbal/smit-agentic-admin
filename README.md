@@ -7,20 +7,19 @@
 [![LangGraph](https://img.shields.io/badge/LangGraph-Latest-green.svg)](https://langchain-ai.github.io/langgraph/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-teal.svg)](https://fastapi.tiangolo.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://www.postgresql.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
 
 ## 📋 Overview
 
-**SMIT Agentic Admin** is an enterprise-grade autonomous administration system designed for educational institutes. Built for **Saylani Mass IT Training (SMIT)**, this intelligent platform leverages advanced multi-agent AI architecture to automate student management, database operations, and mass communications through a conversational interface.
+**SMIT Agentic Admin** is an enterprise-grade autonomous administration system designed and built for **Saylani Mass IT Training (SMIT)**, this intelligent platform leverages advanced multi-agent AI architecture to automate student management, database operations, and mass communications through a conversational interface.
 
 ### 🎯 Key Highlights
 
 - **🤖 Multi-Agent AI System** - LangGraph-powered autonomous decision-making
 - **💬 Natural Language Interface** - Query databases and trigger actions conversationally
 - **📧 Automated Communications** - Bulk emails via Gmail API & WhatsApp via Twilio
-- **🎤 Voice-Enabled** - Text-to-Speech responses with Edge-TTS
+- **🎤 Voice-Enabled** - Full duplex voice interface with Speech-to-Text (STT) input & Text-to-Speech (TTS) responses
 - **⚡ Real-Time Operations** - WebSocket-based instant updates
 - **🗄️ Intelligent Database Management** - Dynamic SQL generation with safety checks
 - **📊 Live Data Visualization** - HTML tables rendered in real-time
@@ -36,7 +35,7 @@
 | **Natural Language Queries** | Ask questions like *"Show unpaid students"* - AI generates and executes SQL |
 | **Automated Email Campaigns** | Send personalized fee reminders and attendance warnings to hundreds of students |
 | **WhatsApp Integration** | Bulk WhatsApp messaging via Twilio API |
-| **Voice Assistant** | Speak to the system and get audio responses |
+| **Voice Assistant** | Speak queries via STT (Web Speech API) and receive audio responses via TTS (Edge-TTS) |
 | **Dynamic Course Management** | Update student courses, batches, and schedules autonomously |
 | **Schema Introspection** | AI automatically discovers database structure |
 | **Parallel Processing** | Send 100+ emails/messages concurrently |
@@ -74,56 +73,58 @@
 
 ### User Interface & Conversational Queries
 
+- Main Dashboard
+- Natural Language Query
+- Live Data Visualization
+- Bulk Communication
+- Voice-Enabled Chat
+- Real-Time Status
+
 <table>
   <tr>
     <td align="center">
       <img src="shots/preview1.png" width="400px" alt="Dashboard Overview"/>
-      <br /><b>Main Dashboard</b>
     </td>
     <td align="center">
       <img src="shots/preview2.png" width="400px" alt="Database Query"/>
-      <br /><b>Natural Language Query</b>
     </td>
   </tr>
   <tr>
     <td align="center">
       <img src="shots/preview3.png" width="400px" alt="Data Results"/>
-      <br /><b>Live Data Visualization</b>
     </td>
     <td align="center">
       <img src="shots/preview4.png" width="400px" alt="Bulk Operations"/>
-      <br /><b>Bulk Communication</b>
     </td>
   </tr>
   <tr>
     <td align="center">
       <img src="shots/preview5.png" width="400px" alt="Voice Interface"/>
-      <br /><b>Voice-Enabled Chat</b>
     </td>
     <td align="center">
       <img src="shots/preview6.png" width="400px" alt="System Status"/>
-      <br /><b>Real-Time Status</b>
     </td>
   </tr>
 </table>
 
 ### Database Architecture (Supabase PostgreSQL)
 
+- Database Schema
+- Student Management Tables
+- Live Query Execution
+
 <table>
   <tr>
     <td align="center">
       <img src="shots/preview7.png" width="400px" alt="Database Schema"/>
-      <br /><b>Database Schema</b>
     </td>
     <td align="center">
       <img src="shots/preview8.png" width="400px" alt="Student Records"/>
-      <br /><b>Student Management Tables</b>
     </td>
   </tr>
   <tr>
     <td align="center" colspan="2">
       <img src="shots/preview9.png" width="400px" alt="Query Execution"/>
-      <br /><b>Live Query Execution</b>
     </td>
   </tr>
 </table>
@@ -138,7 +139,7 @@
     </td>
     <td align="center">
       <img src="shots/preview11.jpeg" width="300px" alt="Email Draft"/>
-      <br /><b>Gmail Draft Template</b>
+      <br /><b>Drafted Fee Reminder Template</b>
     </td>
   </tr>
   <tr>
@@ -148,7 +149,7 @@
     </td>
     <td align="center">
       <img src="shots/preview13.jpeg" width="300px" alt="Email Template"/>
-      <br /><b>Fee Reminder Template</b>
+      <br /><b>Drafter Low Attendance Warning Template</b>
     </td>
   </tr>
   <tr>
@@ -174,10 +175,12 @@
 ### Communication APIs
 - **Gmail API** - OAuth2-authenticated email sending
 - **Twilio WhatsApp API** - Business messaging integration
-- **Edge-TTS** - Microsoft's neural text-to-speech engine
+- **Edge-TTS** - Microsoft's neural text-to-speech engine (TTS)
+- **Web Speech API** - Native browser speech-to-text (STT)
 
 ### Frontend
 - **WebSocket** - Real-time bidirectional communication
+- **Web Speech API** - Browser-native speech recognition (STT)
 - **Vanilla JavaScript** - No framework overhead, pure performance
 - **Responsive CSS** - Mobile-first adaptive design
 - **Font Awesome** - Professional iconography
@@ -217,9 +220,11 @@ The system uses the following integrations:
 - Support for international phone formats
 
 ### 🎤 Voice Features
-- Edge-TTS with Irish Female voice (Emily)
-- 55% speed increase for natural flow
+- **STT (Speech-to-Text)**: Web Speech API for voice input
+- **TTS (Text-to-Speech)**: Edge-TTS with Irish Female voice (Emily)
+- 55% speed increase for natural conversational flow
 - Automatic audio streaming via WebSocket
+- Real-time transcription of user commands
 
 ---
 
@@ -250,43 +255,35 @@ Tools Available:
 5. **Response Formatting** → HTML tables for UI + voice summary
 6. **Action Triggers** → Automatically drafts/sends communications
 
-### Safety Features
-
-- ✅ SQL injection prevention via parameterized queries
-- ✅ Only `SELECT` allowed in query_db tool
-- ✅ Row limits enforced (default: 100 rows)
-- ✅ Transaction management with automatic rollback
-- ✅ Rate limiting for external APIs
-
 ---
 
 ## 📊 Use Cases
 
 ### 1️⃣ **Fee Management**
 ```
-User: "Show all unpaid students in AI course"
-AI: [Queries DB] → [Displays 33 students] → "Would you like to send reminders?"
-User: "Yes, email them"
-AI: [Sends 33 personalized fee reminder emails in parallel]
+User: "Show all unpaid students in AI & DS course"
+AI: [Queries DB] → [Displays 3 students] → "Found 3 unpaid students from the AI & Data Science Course"
+User: "Email them"
+AI: [Sends 3 personalized fee reminder emails in parallel]
 ```
 
 ### 2️⃣ **Attendance Tracking**
 ```
 User: "Find students with attendance below 80%"
-AI: [Joins students + courses tables] → "Found 12 students. Draft warnings?"
+AI: [Joins students + courses tables] → "Found 12 students with attendance below 80%"
 User: "Draft them"
 AI: [Creates 12 Gmail drafts with attendance data]
 ```
 
 ### 3️⃣ **Batch Management**
 ```
-User: "Move Ahmed from Monday batch to Thursday"
+User: "Move Ahmed's slot from Mon-Wed-Fri to Tue-Thur, if seats available"
 AI: [Finds target batch] → [Updates batch_id] → [Auto-adjusts seat counts]
 ```
 
 ### 4️⃣ **WhatsApp Campaigns**
 ```
-User: "Send WhatsApp to 03323953852 saying 'Your next class is tomorrow'"
+User: "Send WhatsApp to 033239***** saying 'Your next class is tomorrow'"
 AI: [Formats number] → [Sends via Twilio] → "✅ Message sent"
 ```
 
@@ -307,11 +304,11 @@ AI: [Formats number] → [Sends via Twilio] → "✅ Message sent"
 
 ## 🏆 Project Context
 
-This system was developed during my tenure as an **AI/ML Intern at SaylaniTech Softhouse**, following my certification in **AI & Data Science from Saylani Mass IT Training (SMIT)**. The project showcases enterprise-level AI engineering, full-stack development, and production-ready system design.
+This system was developed during my tenure as an **AI/ML Intern at SaylaniTech**, following my certification in **AI & Data Science from Saylani Mass IT Training (SMIT)**. The project showcases enterprise-level AI engineering, full-stack development, and production-ready system design.
 
 ### Built For
 **Saylani Mass IT Training (SMIT)**  
-Pakistan's largest non-profit IT training institute, serving 50,000+ students annually across 10+ cities.
+Pakistan's largest non-profit IT training institute, serving 100,000+ students annually across 10+ cities.
 
 ---
 
@@ -319,10 +316,10 @@ Pakistan's largest non-profit IT training institute, serving 50,000+ students an
 
 ### 🚀 Want This For Your Institute?
 
-This system is designed as a **customizable solution** for educational institutions, training centers, and organizations managing large student databases. I offer:
+This system is available as a customizable product for educational institutions, training centers, and organizations managing large student databases. Whether you need this exact solution or something tailored to your specific requirements, I offer:
 
 - ✅ **Custom Deployment** - Tailored to your infrastructure
-- ✅ **Feature Extensions** - SMS integration, LMS connections, payment gateways
+- ✅ **Feature Extensions** - SMS integration, LMS connections, payment gateways and more
 - ✅ **White-Label Branding** - Your logo, colors, domain
 - ✅ **Training & Support** - Full documentation & onboarding
 - ✅ **Multi-Tenant Architecture** - Host multiple institutes on one platform
@@ -337,14 +334,6 @@ AI/ML Engineer | Full-Stack Developer
 - 🐙 GitHub: [@adeel-iqbal](https://github.com/adeel-iqbal)
 
 > 💡 **Enterprise Inquiries Welcome** - I provide consultancy for AI-powered automation solutions, LangGraph implementations, and scalable multi-agent systems.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-For commercial deployments or proprietary modifications, please contact me for a separate licensing agreement.
 
 ---
 
