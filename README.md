@@ -1,4 +1,4 @@
-# 🎓 SMIT Agentic Admin
+# 🎓 S.M.I.T Agentic Administration
 
 > **AI-Powered Autonomous Student Management System**  
 > Built with LangGraph Multi-Agent Architecture | Real-Time Database Operations | Automated Communications
